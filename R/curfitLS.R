@@ -176,9 +176,10 @@ curfitLS <- function(xyw, s=NULL, knots = NULL, n = NULL, from, to,
     val$to <- to   
 ##
 ## 7.  Decode 'ier' error code
-##  
+##
+  msg <- NULL 
   val$message <- switch(as.character(val$ier),
-      "0" = character(0),
+     "0" = character(0),
      "-1" = "Spline returned is an interpolating spline.",
      "-2" = {
        fmt1 <- paste("Spline returned is the weighted",
@@ -186,6 +187,25 @@ curfitLS <- function(xyw, s=NULL, knots = NULL, n = NULL, from, to,
        msg1 <- sprintf(fmt1, k)
        msg2 <- sprintf("Upper bound on 's' is %f.", val$fp)
        paste(msg1, msg2)
+     },
+     "-3" = {
+        if(val$iopt != (-1)) 
+          msg <- sprintf("Illegal option %d for a least squares spline.",
+                         val$iopt)
+        if(val$k < 1 || val$k > 5)
+          msg <- sprintf("%s Illegal 'k' (%d).", msg, val$k)
+        if(length(val$x) <= val$k)
+          msg <- sprintf("%s Length 'x' (%d) must be greater than 'k' (%d).",
+                             msg, m, val$k)
+        if(val$nest < 2 * val$k + 2)
+          msg <- sprintf("%s Illegal value of 'nest' (%d).",
+                         msg, val$nest)
+        if(val$lwrk < with(val, (k + 1) * m + nest * (7 + 3 * k)))
+          msg <- sprintf("%s Illegal value of 'lwrk' (%d).",
+                         msg, val$lwrk)
+        if(!all(val$w > 0))
+          msg <- sprintf("%s Some weights nonpositive.", msg)
+        msg
      },
       "1" = {
         paste("The required storage exceeds the available",
@@ -199,9 +219,9 @@ curfitLS <- function(xyw, s=NULL, knots = NULL, n = NULL, from, to,
       {
         msg <- paste("ier =", val$ier, ":  ")
 #        if(val$iopt > 1 || val$iopt < -1)
-         if(val$iopt != (-1)) 
-           msg <- sprintf("Illegal option %d for a least squares spline.",
-                          val$iopt)
+        if(val$iopt != (-1)) 
+          msg <- sprintf("Illegal option %d for a least squares spline.",
+                         val$iopt)
         if(val$k < 1 || val$k > 5)
           msg <- sprintf("%s Illegal 'k' (%d).", msg, val$k)
         if(length(val$x) <= val$k)
@@ -218,7 +238,18 @@ curfitLS <- function(xyw, s=NULL, knots = NULL, n = NULL, from, to,
         msg
       }                        
                         )
-  if(val$ier > 0) stop(val$message)
+#  if(val$ier > 0){
+#    if(val$ier>3)
+#      cat("BUG IN curfitLS:  Violation of Fortran requirements.\n",
+#          "iopt =", iopt, ';  k =', k, ';m =', m, ';  n =', n,
+#          ';  nest =', nest, ';  lwrk =', lwrk, ';  s =', s, 
+#          '\nrange(w) =', range(w), '\n  knots =', knots,
+#          '\nrange(x) =', range(x), ';  range(diff(x)) =',
+#          range(diff(x)), "" ) 
+#    stop(val$message)
+#  }
+  if(val$ier < (-2))warning(val$message) 
+  if(val$ier > 0)stop(val$message)
 ##
 ## 8.  Clean up
 ##  

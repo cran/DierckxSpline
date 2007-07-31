@@ -92,8 +92,15 @@ curfitSS <- function(xyw, s=NULL, knots = NULL, n = NULL, from, to,
   nest <- as.integer(max(n, 2*k+3, m + k + 2))  
   coef <- single(nest)
 # curfit.f:  'wrk:  real array of dimension at least
-# (m*(k+1)+nest*(7+3*k));  try double this number.  
-  lwrk <- as.integer(2 * (m * (k + 1) + nest * (7 + 3 * k)))
+# (m*(k+1)+nest*(7+3*k));  try double this number.
+# curfit.f kills R sometimes with the default lwrk
+# AND with double this number.    
+#  lwrk <- as.integer(2 * (m * (k + 1) + nest * (7 + 3 * k)))
+#
+#  the following also killed R:  with with(titanium, curfit(x, y))  
+#  lwrk <- as.integer(10 * ((m+n) * (k + 1) + nest * (7 + 3 * k)))
+#  
+  lwrk <- as.integer(2 * (m * (k + 1) + nest * (7 + 3 * k)))  
   wrk <- single(lwrk)
   iwrk <- integer(nest)
 ##

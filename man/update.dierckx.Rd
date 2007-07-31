@@ -2,11 +2,11 @@
 \alias{update.dierckx}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-  Update method for object of class 'dierckx'.  
+  Update method for object of class 'dierckx'.
 }
 \description{
   Update a fit using any of several different functions that produce an
-  object of class 'dierckx'.  
+  object of class 'dierckx'.
 }
 \usage{
   \method{update}{dierckx}(object, knots, k, s, ...)
@@ -24,25 +24,18 @@
     are 1 to 5, inclusively.
   }
   \item{s}{
-    a nonnegative number or NULL.  
+    a nonnegative number or NULL.
   }
   \item{\dots}{
-    Currently ignored.  
-    
-    Additional arguments used only in code{update.curfit}. Otherwise,
+    Currently ignored.
+
+    Additional arguments used only in \code{update.curfit}. Otherwise,
     ignored.
   }
 }
-\details{
-
-
-
-  
-
-
-}
+%\details{}
 \value{
-  An object as produced by the function named in 'object[["routine"]]'.  
+  An object as produced by the function named in 'object[["routine"]]'.
 }
 \references{
 Dierckx, P. (1993) \emph{Curve and Surface Fitting with Splines}, Oxford
@@ -64,11 +57,11 @@ y <- c(1.0,1.0,1.4,1.1,1.0,1.0,4.0,9.0,13.0,
 #fitSS0 <- curfit(x, y, s=0)
 
 ks <- c(3, 5, 2)
-kk <- length(ks) 
-z <- vector("list", kk) 
-names(z) <- ks 
+kk <- length(ks)
+z <- vector("list", kk)
+names(z) <- ks
 for(i in 1:kk) {
-  k <- ks[i] 
+  k <- ks[i]
   z1 <- curfit(x, y, s = 1000, k = k)
   z2 <- update(z1, s = 60)
   z3 <- update(z2, s = 10)

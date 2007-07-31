@@ -1,5 +1,4 @@
 \name{integral.dierckx}
-\alias{integral}
 \alias{integral.dierckx}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Spline Integration}
@@ -8,12 +7,11 @@
   which is given in its normalized b-spline representation
 }
 \usage{
-integral(x, ...)
-\method{integral}{dierckx}(x, from = NULL, to = NULL, ...)
+\method{integral}{dierckx}(expr, from = NULL, to = NULL, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{An object of class \code{dierckx}.}
+  \item{expr}{An object of class \code{dierckx}.}
   \item{from}{Lower integration bound. If \code{NULL}, the minimum knot
     value is used.}
   \item{to}{Upper integration bound. If \code{NULL}, the maximum knot
@@ -33,8 +31,17 @@ integral(x, ...)
 Dierckx, P. (1991) \emph{Curve and Surface Fitting with Splines}, Oxford
 Science Publications.
 }
-\author{Sundar Dorai-Raj}
-\seealso{\code{\link{curfit}}, \code{\link{deriv.dierckx}}, \code{\link[stats]{spline}}, \code{\link[stats]{smooth.spline}}}
+\author{
+  Sundar Dorai-Raj with help from William Venables on how to eliminate a
+  conflict between the generic \code{integral} functions in the
+  \code{PolynomF} and \code{DierckxSpline} packages.  
+}
+\seealso{
+  \code{\link[PolynomF]{integral}}, 
+  \code{\link{curfit}},
+  \code{\link{deriv.dierckx}},
+  \code{\link[stats]{spline}},
+  \code{\link[stats]{smooth.spline}}}
 \examples{
 x <- seq(0, 1, 0.1)
 y <- (1 - x)^3

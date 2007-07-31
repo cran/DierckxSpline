@@ -3,7 +3,7 @@ dierckx2fd <- function(object){
 ##
 ## 1.  check class
 ## 
-  if(class(object) != 'dierckx')
+  if(!inherits(object, 'dierckx')) 
     stop("object is not of class 'dierckx', is ",
          class(object))
   objName <- deparse(substitute(object))

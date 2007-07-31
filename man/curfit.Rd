@@ -5,7 +5,8 @@
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{Curve fitting with splines}
 \description{
-  General curve fitting with splines.  Wrapper for Fortran function CURFIT.
+  General curve fitting with splines.  Wrapper for Fortran function
+  CURFIT. 
 }
 \usage{
 curfit(x, ...)
@@ -177,6 +178,17 @@ Science Publications.
   \code{\link[stats]{spline}},
   \code{\link[stats]{smooth.spline}}}
 \examples{
+##
+## titanium example
+##
+data(titanium)
+# The following kills R:  
+# with(titanium, curfit(x, y))
+
+
+##
+## made up example
+##
 x <- 0:24
 y <- c(1.0,1.0,1.4,1.1,1.0,1.0,4.0,9.0,13.0,
        13.4,12.8,13.1,13.0,14.0,13.0,13.5,

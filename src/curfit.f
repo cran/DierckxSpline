@@ -219,7 +219,7 @@ c  ..
 c  we set up the parameters tol and maxit
       maxit = 20
       tol = 0.1e-02
-c  before startig computations a data check is made. if the input data
+c  before starting computations a data check is made. if the input data
 c  are invalid, control is immediately repassed to the calling program.
       ier = 10
       if(k.le.0 .or. k.gt.5) go to 50
@@ -254,7 +254,11 @@ c we partition the working space and determine the spline approximation.
       ib = ia+nest*k1
       ig = ib+nest*k2
       iq = ig+nest*k2
+c give ier a strange value to test fpcurf 
+c      ier = 1000+ier 
       call fpcurf(iopt,x,y,w,m,xb,xe,k,s,nest,tol,maxit,k1,k2,n,t,c,fp,
      * wrk(ifp),wrk(iz),wrk(ia),wrk(ib),wrk(ig),wrk(iq),iwrk,ier)
+c      if(ier.ne.1000)go to 50 
+c      ier = -3 
   50  return
       end
