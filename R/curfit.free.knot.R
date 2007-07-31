@@ -5,6 +5,8 @@ curfit.free.knot <- function(x, y, w = NULL, k = 3, g = 10, eps = 0.5e-3,
 ##  
   penalty.opt <- function(kn, x, y, k, sigma0, eps, fixed = NULL, ...) {
     kn <- sort(c(kn, fixed))
+    if(length(u <- unique(kn)) < length(kn))
+      stop(sprintf("%d coincident knot(s) detected", length(kn) - length(u)))
     sp <- curfit(x, y, method = "ls", knots = kn, ...)
     p <- eps * sigma0/((sp$g + 1)^2/(diff(range(x))))
     pen <- p * sum(1/diff(unique(knots(sp, FALSE))))

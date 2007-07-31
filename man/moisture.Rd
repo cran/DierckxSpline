@@ -37,6 +37,18 @@ data(moisture)
 }
 %\seealso{\code{\link{eval.penalty}}}
 \examples{
+data(moisture)
+moisture # Dierckx, Table 7.2, p. 130
+f1 <- with(moisture,
+  concon(x, y, w, v, s = 0.2))
+f2 <- update(f1, s = 0.04)
+f3 <- update(f1, s = 0.0002)
+
+g1 <- with(moisture,
+  curfit(x, y, w, method = "ls",
+         knots = knots(f1)))
+g2 <- update(g1, knots = f2)
+g3 <- update(g1, knots = f3)
 
 }
 % docclass is function

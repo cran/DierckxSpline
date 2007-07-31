@@ -7,6 +7,9 @@ percur <- function(x, ...) {
 }
 
 curfit.formula <- function(x, data, ..., weights, subset) {
+  msg <- "NOT IMPLEMENTED YET;  USE 'curfit.default'." 
+  print(msg)
+  msg
 #  cl <- match.call()
 #  mf <- match.call(expand.dots = FALSE)
 #  m <- match(c("x", "data", "subset", "weights"), names(mf), 0)

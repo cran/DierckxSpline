@@ -8,7 +8,6 @@
   dierckx.  
 }
 \usage{
-knots(Fn, ...) 
 \method{knots}{dierckx}(Fn, interior=TRUE, ...)
 }
 %- maybe also 'usage' for other objects documented here.

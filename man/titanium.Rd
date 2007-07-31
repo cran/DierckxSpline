@@ -43,6 +43,10 @@ data(titanium)
 }
 %\seealso{\code{\link{eval.penalty}}}
 \examples{
+data(titanium)
+r <- curfit.free.knot(titanium$x2,
+   titanium$y, g = 10, eps = 5e-4)
+xyplot(r, show.knots = TRUE)
 
 }
 % docclass is function
