@@ -34,11 +34,11 @@ panel.dierckx(x, y, newx, newy, knots = NULL, knots.y = NULL, lty = 2,
   }
   \item{knot.fill}{
     'fill' argument passed to 'lpoints' when plotting the knots;  see
-    \code{\line{lpoints}}.
+    \code{\link{lpoints}}.
   }
   \item{\dots}{
-    other graphics parameters passed to \code{\line{lpoints}} and
-    \code{\line{panel.xyplot}}.
+    other graphics parameters passed to \code{\link{lpoints}} and
+    \code{\link{panel.xyplot}}.
   }
 }
 \details{

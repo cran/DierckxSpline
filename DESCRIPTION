@@ -1,7 +1,7 @@
 Package: DierckxSpline
 Type: Package
 Title: R companion to "Curve and Surface Fitting with Splines"
-Version: 1.1-3
+Version: 1.1-4
 Date: 2009-01-17
 Author: Sundar Dorai-Raj and Spencer Graves
 Maintainer: Spencer Graves <spencer.graves@prodsyse.com>
@@ -13,7 +13,6 @@ Depends: R (>= 2.4.0), stats, lattice, PolynomF
 Suggests: fda, splines
 Repository: CRAN
 Repository/R-Forge/Project: dierckxspline
-Repository/R-Forge/Revision: 39
-Publication/Date: 2009-01-18 02:56:16
-Packaged: Wed Apr 15 05:00:31 2009; rforge
-Date/Publication: 2009-04-16 08:21:36
+Repository/R-Forge/Revision: 41
+Date/Publication: 2009-11-01 17:32:34
+Packaged: 2009-10-12 20:05:08 UTC; rforge
