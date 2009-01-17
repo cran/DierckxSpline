@@ -5,7 +5,7 @@
 \title{Curve fitting with convexity constraints}
 \description{
   General curve fitting with splines with convexity constraints.
-  Wrapper for the Fortran function CONCON. 
+  Wrapper for the Fortran function CONCON.
 }
 \usage{
 concon(x, ...)
@@ -93,11 +93,12 @@ Science Publications.
 \seealso{\code{\link{curfit}}, \code{\link[stats]{spline}}, \code{\link[stats]{smooth.spline}}}
 \examples{
 data(moisture)
+\dontrun{
 f1 <- with(moisture, concon(x, y, w, v, s = 0.2))
 f2 <- update(f1, s = 0.04)
 f3 <- update(f1, s = 0.0002)
 g1 <- with(moisture, curfit(x, y, w, knots = knots(f1, interior=FALSE)))
-#must include end knots, via interior = FALSE 
+#must include end knots, via interior = FALSE
 g2 <- update(g1, knots = knots(f2, FALSE))
 g3 <- update(g1, knots = knots(f3, FALSE))
 
@@ -118,12 +119,12 @@ xyplot(y ~ x | method, out, groups = group, panel = function(...) {
                       col = "#800000", pch = 16, cex = 1.2)
        },
        xlim = c(-1, 11), xlab = "", ylab = "", layout = c(1, 2),
-       as.table = TRUE, scales = list(cex = 1.2), 
+       as.table = TRUE, scales = list(cex = 1.2),
        par.strip.text = list(cex = 1.5), type = "l", lwd = 3,
        key = list(space = "top", cex = 1.2, columns = 3,
          text = list(levels(out$group)),
          lines = list(lwd = 3, col = trellis.par.get("superpose.line")$col[1:3])))
-}
+}}
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
 \keyword{smooth}
