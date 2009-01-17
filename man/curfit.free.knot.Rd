@@ -141,11 +141,16 @@ Science Publications.
   \code{\link[stats]{spline}},
   \code{\link[stats]{smooth.spline}}}
 \examples{
+# Skip this test on CRAN
+# because it may exceed their 5 second limit
+if(!CRAN()){
+
 data(titanium)
 titan10 <- with(titanium, curfit.free.knot(x, y))
 #titan10.1 <- with(titanium, curfit.free.knot(x, y, k=1))
 #titan10.1 <- with(titanium, curfit.free.knot(x, y, k=1, g=8, trace=1.1))
-#titan10.1 <- with(titanium, curfit.free.knot(x, y, k=1,g=7:8, trace=1.1))
+#titan10.1 <- with(titanium, curfit.free.knot(x, y, k=1,g=7:8,trace=1.1))
+}
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

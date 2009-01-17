@@ -48,10 +48,14 @@ data(titanium)
 %\seealso{\code{\link{eval.penalty}}}
 \examples{
 data(titanium)
+# Skip this test on CRAN,
+# because it may exeed their 5 second limit
+if(!CRAN()){
+
 r <- curfit.free.knot(titanium$x2,
    titanium$y, g = 10, eps = 5e-4)
 xyplot(r, show.knots = TRUE)
-
+}
 }
 % docclass is function
 \keyword{datasets}
