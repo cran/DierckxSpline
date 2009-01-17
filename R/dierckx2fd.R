@@ -1,9 +1,9 @@
-dierckx2fd <- function(object){ 
+dierckx2fd <- function(object){
 # Translate an object of class dierckx to class fd
 ##
 ## 1.  check class
-## 
-  if(!inherits(object, 'dierckx')) 
+##
+  if(!inherits(object, 'dierckx'))
     stop("object is not of class 'dierckx', is ",
          class(object))
   objName <- deparse(substitute(object))
@@ -19,12 +19,12 @@ dierckx2fd <- function(object){
          "and dierckx2fd is programmed to translate only ",
          "B-splines with coincident boundary knots.")
 ##
-## 2.  Create a basis 
+## 2.  Create a basis
 ##
   rngval <- with(object, c(from, to))
   nKnots <- object$n
 # length(dierckx$knots) = nest = estimated number of knots
-# number actually used = dierckx$n  
+# number actually used = dierckx$n
 #  knots <- object$knots[1:n]
   Knots <- knots(object, interior=FALSE)
   k <- object$k
@@ -34,8 +34,8 @@ dierckx2fd <- function(object){
   xlab <- object$xlab
   if(!require(fda))
     stop("library(fda) required for function 'dierckx2fd'",
-         ";  please install.") 
-# 
+         ";  please install.")
+#
   B.basis <- create.bspline.basis(rangeval=rngval, norder=nOrder,
                                 breaks=breaks, names=xlab)
 ##
@@ -45,7 +45,7 @@ dierckx2fd <- function(object){
 #
   ylab <- object$ylab
   fdNms <- list(args=xlab, reps="reps 1", funs=ylab)
-  fd(coef=coef., basisobj=B.basis, fdnames=fdNms)
+  fda::fd(coef=coef., basisobj=B.basis, fdnames=fdNms)
 }
 
 fd2dierckx <- function(object){
@@ -57,18 +57,18 @@ fd2dierckx <- function(object){
       stop("object is not of class 'fd', is ", class(object))
 ##
 ## 2.  check k
-##  
+##
   k <- with(object$basis, nbasis-length(params)-1)
   if(k<1)
     stop("DierckxSpline does NOT support splines of order 1 ",
-         "(degree 0);  degree = ", k, ".  Aborting.")  
+         "(degree 0);  degree = ", k, ".  Aborting.")
   if(k>5)
     stop("DierckxSpline does NOT support splines of order more than 6 ",
-         "(degree more than 5);  degree = ", k, ".  Aborting.")  
+         "(degree more than 5);  degree = ", k, ".  Aborting.")
 ##
-## 3.  Let x = knots, y = values at knots 
+## 3.  Let x = knots, y = values at knots
 ##
-  rk4 <- 1/(4*k) 
+  rk4 <- 1/(4*k)
   knots0 <- with(object$basis, c(rangeval[1], params, rangeval[2]) )
   m0 <- length(knots0)
   x2 <- (knots0[-m0]+ outer(diff(knots0), seq(rk4, 1, rk4)))
@@ -76,11 +76,11 @@ fd2dierckx <- function(object){
   m <- length(x)
   y <- eval.fd(object, x)
 ##
-## 4.  Construct the dierckx version 
+## 4.  Construct the dierckx version
 ##
 #  curfit(x, y, k=k, s=0)
   knots <- c(rep(x[1], k), knots0, rep(x[m], k))
-#  curfit(x, y, k=k, s=0, knots=knots) 
-#  curfit(x, y, k=k, n=length(knots), knots=knots) 
-  curfit(x, y, k=k, from=min(x), to=max(x), knots=knots)  
+#  curfit(x, y, k=k, s=0, knots=knots)
+#  curfit(x, y, k=k, n=length(knots), knots=knots)
+  curfit(x, y, k=k, from=min(x), to=max(x), knots=knots)
 }

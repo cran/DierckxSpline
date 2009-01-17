@@ -1,5 +1,5 @@
-a71f5a6ddb9ab8a95b44c966f1a30d71 *DESCRIPTION
-6f642ac8b3985ca0c55fe7dd51218937 *NAMESPACE
+6aacff1abcb85f11140f50cdad611e86 *DESCRIPTION
+561fac198d2dd6a1800f0626d4f08668 *NAMESPACE
 141ceeb0933c7956758ef5f229346d21 *R/as.dierckx.R
 2a80d5820bd36412d435b4ca05b27d28 *R/coef.dierckx.R
 a0939cce3243f8923841e4a949c1a400 *R/concon.R
@@ -11,7 +11,7 @@ c20061d3217a0f057dcc9ef68dd8dff3 *R/curfitLS.R
 fb789fdf739e46a15f5af8ed9df6b114 *R/curfitUpdate.R
 6e7c145060975df9da33c806da8da530 *R/deriv.dierckx.R
 ff9d5417bc14466a6b434fc63e31ff07 *R/deviance.dierckx.R
-8d9c48e5af91744c18b4c6f8b082a385 *R/dierckx2fd.R
+67d90af3094f62fc70058a979e903c35 *R/dierckx2fd.R
 3a177ea7bb6e0c9327ab922c2015d7a5 *R/fitted.dierckx.R
 592f602b997c3cc87bb315c17173cd42 *R/insert.dierckx.R
 62f4ccd7a06eec2f0a56aae11bafa1a0 *R/integral.dierckx.R
@@ -24,7 +24,7 @@ eba5809e958c32108afefa3095772312 *R/profile.dierckx.R
 bd19602cafdf59e29d19e083ede7bcf4 *R/update.dierckx.R
 6bd0072b08b25cd469aac3b976cb3623 *R/xyplot.dierckx.R
 c7cd71bc3440a74545bc54a4e151bb3b *R/xyw.coords.R
-e1bf5c354405d1fa99f9b863911dc79b *R/zzz.R
+7f6c59c2ac7e2468a161ebb095438ff1 *R/zzz.R
 4f33f5d2c7bfc6e4f71316155500062a *data/cam.txt.gz
 9781c0e239929af4acaa8a5f5119b74f *data/knee.txt.gz
 ff74adf3792e94c7451c4ce09a78d0be *data/moisture.txt.gz
@@ -34,12 +34,12 @@ a21b2367952e2e8002adf409439ed0c6 *inst/jsm2007/DierckxSpline_JSM2007.R
 4f3e252217eeea5ba90066da3faef247 *inst/jsm2007/DierckxSpline_JSM2007.ppt
 66fa22cf3e2bd88a6f278b888c81776c *inst/scripts/Dierckx.xls
 0d47f5af829acd89630cf68648d9cf98 *inst/scripts/ch01.R
-d89a4d68f572e317f3a92a93a916fcf9 *man/as.dierckx.Rd
+2f519dc229768dac1562c5412fca38ec *man/as.dierckx.Rd
 3150a1318f9bb096f2c22c34e8caeb50 *man/cam.Rd
 d89c2190da17978e83446544d65bcbdf *man/concon.Rd
-eac2ee16546010b10b4319b6e0a5b595 *man/controlPolygon.Rd
+4f376aff44d3cb9aa13e19b781f3f6a0 *man/controlPolygon.Rd
 fa4d5a7462ac6b8070319cb5de34c1d6 *man/curfit.Rd
-778040c790e4138c1438602abf78bdb3 *man/curfit.free.knot.Rd
+9b96fdea12e4cc388fadc3542977256e *man/curfit.free.knot.Rd
 16ef72f8cee5da8e50f5ce4fb7972492 *man/deprecated.Rd
 6a524269fb406194bbe7fe30d5fc354f *man/deriv.dierckx.Rd
 ff5e44783cdf4c7c7a223eb6a8413802 *man/insert.dierckx.Rd

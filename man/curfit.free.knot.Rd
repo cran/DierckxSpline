@@ -2,10 +2,17 @@
 \alias{curfit.free.knot}
 \title{free-knot splines}
 \description{
-  Least squares splines with variable knots.  
+  Least squares splines with variable knots.
 }
 \usage{
-curfit.free.knot(x, y, w=NULL, k = 3, g = 10, eps = 0.5e-3,
+#curfit.free.knot(x, y, w=NULL, k = 3, g = 10, eps = 0.5e-3,
+#                 prior = NULL, fixed = NULL, trace=1, ...)
+
+#NOTE:  The following is required by CRAN rules that
+# function names like "as.numeric" must follow the documentation
+# standards for S3 generics, even when they are not.
+# Please ignore the following line:
+\method{curfit}{free.knot}(x, y, w=NULL, k = 3, g = 10, eps = 0.5e-3,
                  prior = NULL, fixed = NULL, trace=1, ...)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -18,12 +25,12 @@ curfit.free.knot(x, y, w=NULL, k = 3, g = 10, eps = 0.5e-3,
     degree of the spline;  k=3 for cubic spline.
   }
   \item{g}{
-    integer vector specifying the number(s) of knots to try.  
-    
+    integer vector specifying the number(s) of knots to try.
+
     This is ignored if 'prior' is provided.
 
     If(length(g) == 1) g = 1:g.  If(length(g)>1) g = seq(min(g),
-    max(g)).  
+    max(g)).
   }
   \item{eps}{
     weight on the reciprocal differences between successive knots:
@@ -41,9 +48,9 @@ curfit.free.knot(x, y, w=NULL, k = 3, g = 10, eps = 0.5e-3,
     then with trace > 0, after a model for each g[i] is fit, the
     algorithm reports the number of knots, the variance of the
     residuals, and the z-score for the lag 1 autocorrelation of
-    residuals. 
+    residuals.
 
-    For g[i] > 1, 'optim' is called with control=list(trace=trace-1). 
+    For g[i] > 1, 'optim' is called with control=list(trace=trace-1).
   }
   \item{\dots}{
     Additional arguments used by \code{curfit}.
@@ -56,14 +63,14 @@ curfit.free.knot(x, y, w=NULL, k = 3, g = 10, eps = 0.5e-3,
   2.  Otherwise, decode 'g' and fit one model for each level of 'g'.
 
   3.  Return the first model with a negative lag 1 autocorrelation, if
-  any.  Otherwise, return the last model fit.  
+  any.  Otherwise, return the last model fit.
 }
 \value{
   An object of class \code{dierckx} with the following components:
 
-  %???? anything more than returned by curfit?  
+  %???? anything more than returned by curfit?
 
-  
+
   \item{iopt}{method used}
   \item{m}{length of 'x'}
   \item{x}{abscissa values}
@@ -71,7 +78,7 @@ curfit.free.knot(x, y, w=NULL, k = 3, g = 10, eps = 0.5e-3,
   \item{w}{input weights}
   \item{from}{input \code{from} value}
   \item{to}{input \code{to} value}
-  \item{k}{ degree of the spline } 
+  \item{k}{ degree of the spline }
   \item{s}{input smoothing parameter}
   \item{nest}{Estimated number of knots}
   \item{n}{Actual number of knots}
@@ -93,10 +100,10 @@ curfit.free.knot(x, y, w=NULL, k = 3, g = 10, eps = 0.5e-3,
     \code{update.dierckx}
   }
   \item{ier}{Error code. Should always be zero.}
-  \item{message}{ convergence message or character(0) } 
+  \item{message}{ convergence message or character(0) }
   \item{g}{Number of interior knots}
   \item{method}{input \code{method} value, e.g, 'ls' for least squares}
-  \item{periodic}{logical:  TRUE for a periodic spline} 
+  \item{periodic}{logical:  TRUE for a periodic spline}
   \item{routine}{Always 'curfit.default'}
   \item{xlab}{ character x axis label for a plot}
   \item{ylab}{ character y axis label for a plot}
@@ -114,11 +121,11 @@ curfit.free.knot(x, y, w=NULL, k = 3, g = 10, eps = 0.5e-3,
       \item{g}{vector of the values of 'g' tested}
       \item{sigma}{
 	variance of the residuals = (sum of squares of residuals) /
-	(degrees of freedom)  	
+	(degrees of freedom)
       }
       \item{T}{
 	z-score for the lag 1 autocorrelation of residuals =
-	sqrt(length(x)-1) * (lag 1 autocorrelation of the residuals).  
+	sqrt(length(x)-1) * (lag 1 autocorrelation of the residuals).
       }
     }
   }

@@ -1,3 +1,3 @@
-.First.lib <- function(libname, pkgname) {
-  library.dynam(pkgname, pkgname)
+.onLoad <- function(libname, pkgname) {
+  library.dynam(pkgname, pkgname, libname)
 }

@@ -1,19 +1,21 @@
 useDynLib(DierckxSpline)
 
 export(curfit, percur, concon, integral.dierckx, insert,
-       curfit.free.knot, xyw.coords, dierckx2fd, fd2dierckx, 
+       curfit.free.knot, xyw.coords, dierckx2fd, fd2dierckx,
        predict.dierckx, controlPolygon, splineZeros,
-       curfit.default, panel.dierckx, as.dierckx)
+       curfit.default, panel.dierckx, as.dierckx,
+       knots.dierckx)
 ## knots ???
 ##       jupp, juppinv, jupp.prior, jupp.naive, extend.prior)
 
+#import(fda)
 importFrom(stats, coef, knots, residuals, fitted,
            deviance, predict, deriv, profile, confint)
 importFrom(lattice, xyplot)
 #importFrom(lattice, panel)
-importFrom(PolynomF, integral) 
+importFrom(PolynomF, integral)
 
-S3method(as.dierckx, fd) 
+S3method(as.dierckx, fd)
 S3method(curfit, default)
 S3method(curfit, formula)
 S3method(concon, default)

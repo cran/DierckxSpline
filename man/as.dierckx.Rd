@@ -106,7 +106,9 @@ y <- c(1.0,1.0,1.4,1.1,1.0,1.0,4.0,9.0,13.0,
 curfit.xy <- curfit(x, y, s=0)
 
 if(require(fda)) {
-  curfit.fd <- as.fd(curfit.xy)
+#  as.fd was not exported;  now it is,
+#  but I need fda:::as.fd temporarily
+  curfit.fd <- fda:::as.fd(curfit.xy)
   plot(curfit.fd) # as an 'fd' object
   points(x, y) # Curve goes through the points.
 

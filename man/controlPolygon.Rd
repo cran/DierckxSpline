@@ -2,7 +2,7 @@
 \alias{controlPolygon}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-  Control polygon of a spline 
+  Control polygon of a spline
 }
 \description{
   The control polygon matches running means of k knots with the spline
@@ -19,12 +19,12 @@ controlPolygon(object)
 }
 \details{
   Dierckx(p. 20-22, including Figure 1.2) explains how the control
-  polygon can help isolate the zeros of a spline.  
+  polygon can help isolate the zeros of a spline.
 }
 \value{
   An array of dimension nbasis x 2, where the first column contains
   running means of k knots, and the second is the coefficients of the
-  spline.  
+  spline.
 }
 \references{
 Dierckx, P. (1993) \emph{Curve and Surface Fitting with Splines}, Oxford
@@ -36,14 +36,16 @@ Science Publications.
   \code{\link[fda]{fd}}
 }
 \examples{
-# spline object of Figure 1.2  
+# spline object of Figure 1.2
 knots1.2 <- c(0,0,0,0, 2, 4, 7, 8, 10,10,10,10)
 wts <- c(1, 2, 5, -5, 5, -1, 3, 3)
 
-library(fda) 
+library(fda)
 fig1.2basis <- create.bspline.basis(c(0, 10),
                                     breaks=c(0, 2, 4, 7, 8, 10))
-fig1.2a.fda <- fd(c(1, 2, 5, -5, 5, -1, 3, 3), fig1.2basis)
+# fda:::fd is used temporarily;  fd should work later
+# but doesn't while debugging DierckxSpline and fda together
+fig1.2a.fda <- fda:::fd(c(1, 2, 5, -5, 5, -1, 3, 3), fig1.2basis)
 plot(fig1.2a.fda, ylim=c(-5, 5))
 
 # NOTE:
